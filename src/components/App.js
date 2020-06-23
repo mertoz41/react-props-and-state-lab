@@ -41,10 +41,11 @@ class App extends React.Component {
 
   onAdoptPet = (e, id) => {
     let updatedPet = this.state.pets.find(pet => pet.id === id)
+    let index = this.state.pets.indexOf(updatedPet)
     updatedPet.isAdopted = true;
-    let filteredPets = this.state.pets.filter(pet => pet.id !== id)
-    filteredPets.unshift(updatedPet)
-    this.setState({pets: filteredPets})
+    let newPets = this.state.pets
+    newPets[index] = updatedPet
+    this.setState({pets: newPets})
 
   }
 
